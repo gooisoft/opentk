@@ -131,8 +131,14 @@ namespace OpenTK.Platform.X11
                 visualAttributes.Add((int)GLXAttribute.DOUBLEBUFFER);
                 visualAttributes.Add(1);
             }
+            
 
-            if (mode.Stereo)
+            if (mode.Stencil > 0)
+            {
+                visualAttributes.Add((int)GLXAttribute.STENCIL_SIZE);
+                visualAttributes.Add(mode.Stencil);
+            }
+            else if (mode.Stereo)
             {
                 visualAttributes.Add((int)GLXAttribute.STENCIL_SIZE);
                 visualAttributes.Add(mode.Stereo ? 1 : 0);
