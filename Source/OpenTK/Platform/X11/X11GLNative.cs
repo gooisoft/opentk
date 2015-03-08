@@ -1470,11 +1470,6 @@ namespace OpenTK.Platform.X11
                 {
                     using (new XLock(window.Display))
                     {
-                        UngrabMouse();
-
-                        Point p = PointToScreen(new Point(MouseState.X, MouseState.Y));
-                        Mouse.SetPosition(p.X, p.Y);
-
                         // Note: if cursorHandle = IntPtr.Zero, this restores the default cursor
                         // (equivalent to calling XUndefineCursor)
                         Functions.XDefineCursor(window.Display, window.Handle, cursorHandle);
@@ -1485,7 +1480,6 @@ namespace OpenTK.Platform.X11
                 {
                     using (new XLock(window.Display))
                     {
-                        GrabMouse();
                         cursor_visible = false;
                     }
                 }

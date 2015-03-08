@@ -277,17 +277,6 @@ namespace OpenTK.Platform.Linux
                 int x = mouse.X;
                 int y = mouse.Y;
 
-                // Make sure the mouse cannot leave the GameWindow when captured
-                if (!CursorVisible)
-                {
-                    x = MathHelper.Clamp(mouse.X, Bounds.Left, Bounds.Right - 1);
-                    y = MathHelper.Clamp(mouse.Y, Bounds.Top, Bounds.Bottom - 1);
-                    if (x != mouse.X || y != mouse.Y)
-                    {
-                        Mouse.SetPosition(x, y);
-                    }
-                }
-
                 if (x != previous_mouse.X || y != previous_mouse.Y)
                 {
                     OnMouseMove(x, y);
